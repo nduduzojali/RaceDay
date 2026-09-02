@@ -26,7 +26,8 @@ The SQL script in `/docs/RaceDay_Schema.sql` creates all 6 entities (User, Event
 A GitHub Actions workflow validates that the `/docs` folder exists and contains the required files on every push.
 
 **Build status screenshot:**
-*(to be added once the workflow is set up and passing)*
+
+![CI/CD Success](ci-cd-success.png)
 
 ## Video Walkthrough
 *(unlisted YouTube link to be added here once recorded)*
