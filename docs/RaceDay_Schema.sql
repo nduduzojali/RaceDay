@@ -1,3 +1,7 @@
+CREATE DATABASE RaceDayDB;
+GO
+USE RaceDayDB;
+GO
 -- ============================================
 -- RaceDay Database Schema
 -- Part 1 - Section C: SQL Database Script
