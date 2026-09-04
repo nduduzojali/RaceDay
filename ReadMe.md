@@ -30,8 +30,7 @@ A GitHub Actions workflow validates that the `/docs` folder exists and contains 
 ![CI/CD Success](ci-cd-success.png)
 
 ## Video Walkthrough
-[Watch Part 1 Walkthrough](## Video Walkthrough
-https://youtube.com/shorts/yLK2ZqR84qA?si=eVCc81xRQl7mmzBF)
+[Watch Part 1 Walkthrough](https://youtube.com/shorts/yLK2ZqR84qA?si=eVCc81xRQl7mmzBF)
 
 ## AI Tool Disclosure
 AI tools were used during the planning process to assist with structuring the ERD, endpoint plan, and SQL script, as well as troubleshooting Git/GitHub setup steps. All planning decisions and final content were reviewed and understood by the author.
