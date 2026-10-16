@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RaceDay.Api</name>
+    </assembly>
+    <members>
+        <member name="M:RaceDay.Api.Controllers.AuthController.Register(RaceDay.Api.Models.RegisterDto)">
+            <summary>Registers a new Organiser or Participant account.</summary>
+            <remarks>
+            Send fullName, email, password, role and optional phoneNumber.
+            Organisers must also send the organiserCode. Returns 201 on success,
+            400 for bad input, 403 for a wrong organiser code, 409 if the email is already used.
+            </remarks>
+        </member>
+        <member name="M:RaceDay.Api.Controllers.AuthController.Login(RaceDay.Api.Models.LoginDto)">
+            <summary>Logs a user in and returns a JWT token containing their role.</summary>
+            <remarks>
+            Send email and password. Returns 200 with a token to use in the Authorize button,
+            or 401 if the credentials are wrong.
+            </remarks>
+        </member>
+        <member name="M:RaceDay.Api.Controllers.CategoriesController.Create(System.Int32,RaceDay.Api.Models.CategoryDto)">
+            <summary>Adds a category (e.g. 10km, 21km, Under 20) to an event (Organiser who owns the event only).</summary>
+            <remarks>Send categoryName, maxParticipants and entryFee. Returns 201, 400, 403 (not an Organiser, or not your event) or 404 (event not found).</remarks>
+        </member>
+        <member name="M:RaceDay.Api.Controllers.CategoriesController.GetForEvent(System.Int32)">
+            <summary>Lists all categories of an event (any logged-in user).</summary>
+            <remarks>No body needed. Returns 200 with the categories, or 404 if the event does not exist.</remarks>
+        </member>
+        <member name="M:RaceDay.Api.Controllers.EnrolmentsController.Enrol(System.Int32)">
+            <summary>Enrols the logged-in Participant into a category (Participant only).</summary>
+            <remarks>No body needed, the participant comes from the token. Returns 201, 403 (not a Participant), 404 (category not found) or 409 (already enrolled, or category full).</remarks>
+        </member>
+        <member name="M:RaceDay.Api.Controllers.EnrolmentsController.GetMine">
+            <summary>Returns all enrolments of the logged-in Participant (Participant only).</summary>
+            <remarks>No body needed. Returns 200 with the participant's own enrolments, or 403 for Organisers.</remarks>
+        </member>
+        <member name="M:RaceDay.Api.Controllers.EnrolmentsController.GetForEvent(System.Int32)">
+            <summary>Returns all enrolments for one event (Organiser who owns the event only).</summary>
+            <remarks>No body needed. Returns 200, 403 (not an Organiser, or not your event) or 404 (event not found).</remarks>
+        </member>
+        <member name="M:RaceDay.Api.Controllers.EventsController.Create(RaceDay.Api.Models.EventDto)">
+            <summary>Creates a new event (Organiser only).</summary>
+            <remarks>
+            Send eventName, description, eventDate, location, distance and eventType (Run, Walk or Cycle).
+            Returns 201 with the event, 400 for bad input, 403 if the caller is not an Organiser.
+            </remarks>
+        </member>
+        <member name="M:RaceDay.Api.Controllers.EventsController.GetAll">
+            <summary>Lists all upcoming events (any logged-in user).</summary>
+            <remarks>No body needed. Returns 200 with the events ordered by date.</remarks>
+        </member>
+        <member name="M:RaceDay.Api.Controllers.EventsController.GetById(System.Int32)">
+            <summary>Returns the details of one event, including its categories (any logged-in user).</summary>
+            <remarks>Returns 200 with the event or 404 if it does not exist.</remarks>
+        </member>
+        <member name="M:RaceDay.Api.Controllers.EventsController.Update(System.Int32,RaceDay.Api.Models.EventDto)">
+            <summary>Updates an event (Organiser who owns it only).</summary>
+            <remarks>Send the same fields as when creating. Returns 200, 400, 403 (not an Organiser, or not your event) or 404.</remarks>
+        </member>
+        <member name="M:RaceDay.Api.Controllers.EventsController.Delete(System.Int32)">
+            <summary>Deletes an event and its categories and enrolments (Organiser who owns it only).</summary>
+            <remarks>No body needed. Returns 200, 403 (not an Organiser, or not your event) or 404.</remarks>
+        </member>
+        <member name="M:RaceDay.Api.Controllers.ResultsController.Capture(System.Int32,RaceDay.Api.Models.ResultDto)">
+            <summary>Records a participant's finish time and position (Organiser who owns the event only).</summary>
+            <remarks>Send finishTime and position. Returns 201, 400, 403 (not an Organiser, or not your event), 404 (enrolment not found) or 409 (result already recorded).</remarks>
+        </member>
+        <member name="M:RaceDay.Api.Controllers.ResultsController.GetForEnrolment(System.Int32)">
+            <summary>Returns the result for an enrolment (the participant who owns it, or the Organiser of that event).</summary>
+            <remarks>No body needed. Returns 200, 403 (not your result) or 404 (enrolment or result not found).</remarks>
+        </member>
+        <member name="T:RaceDay.Api.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:RaceDay.Api.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:RaceDay.Api.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:RaceDay.Api.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
