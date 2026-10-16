@@ -34,3 +34,23 @@ A GitHub Actions workflow validates that the `/docs` folder exists and contains 
 
 ## AI Tool Disclosure
 AI tools were used during the planning process to assist with structuring the ERD, endpoint plan, and SQL script, as well as troubleshooting Git/GitHub setup steps. All planning decisions and final content were reviewed and understood by the author.
+
+
+# Part 2 - RaceDay RESTful API
+
+The Part 2 code is in the `RaceDay.Api` folder (API) and `RaceDay.Api.Tests` (unit tests) of this repository, on the `main` branch.
+
+## Setup and Run Instructions
+
+**Requirements:** .NET SDK, Visual Studio, SQL Server Express (`.\SQLEXPRESS`)
+
+1. Clone the repository and open the solution in Visual Studio.
+2. Check the connection string in `RaceDay.Api/appsettings.json`:
+   `Server=.\SQLEXPRESS;Database=RaceDayApiDB;Trusted_Connection=True;TrustServerCertificate=True;`
+3. Create the database (Entity Framework Core, code-first), from the solution folder:
+   `dotnet ef database update --project RaceDay.Api`
+4. Run the API:
+   `cd RaceDay.Api`
+   `dotnet run --launch-profile https`
+5. Open Swagger in the browser: `https://localhost:7266/swagger`
+6. Run the unit tests from the solution folder: `dotnet test`
