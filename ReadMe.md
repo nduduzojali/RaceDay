@@ -83,3 +83,8 @@ Users register with their details and a role, then log in with their credentials
 After login, the API issues a signed token (JWT) containing the user's ID and role. The client sends this token with every request, which is how the user's authenticated state and role are maintained across requests. Non-public endpoints are only accessible to authenticated users, and the role in the token decides which endpoints they can use.
 
 To test in Swagger: log in, copy the token, click **Authorize**, and paste it in.
+
+
+## CI/CD
+
+![CI/CD](ci-cd-part2.png)
