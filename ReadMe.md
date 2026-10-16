@@ -54,3 +54,23 @@ The Part 2 code is in the `RaceDay.Api` folder (API) and `RaceDay.Api.Tests` (un
    `dotnet run --launch-profile https`
 5. Open Swagger in the browser: `https://localhost:7266/swagger`
 6. Run the unit tests from the solution folder: `dotnet test`
+
+
+## User Roles
+
+**Organiser**
+- Creates, updates and deletes events
+- Defines categories for each event
+- Views all enrolments for their events
+- Captures finish times and finishing positions
+- Views and updates their own profile
+
+**Participant**
+- Views events and categories
+- Enrols in an event by selecting a category
+- Views their own results
+- Views and updates their own profile
+
+Organiser endpoints return **403 Forbidden** for a Participant, and Participant endpoints return **403 Forbidden** for an Organiser. Requests with no token return **401 Unauthorized**.
+
+**How roles are managed:** anyone can register as a Participant. To register as an Organiser, the user must supply the organiser registration code (`OrganiserRegistrationCode` in `appsettings.json`). This stops people from simply choosing the Organiser role.
