@@ -1,0 +1,35 @@
+# Part 2 CI/CD: builds the RaceDay API and runs every unit test on each push.
+# A green tick means the code compiles and all tests pass.
+name: Build and Test API
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      # Download the repository code onto the GitHub runner
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Install the .NET 8 SDK the project targets
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      # Download the NuGet packages (the test project pulls in the API project too)
+      - name: Restore dependencies
+        run: dotnet restore RaceDay.Api.Tests/RaceDay.Api.Tests.csproj
+
+      # Compile the API and the tests
+      - name: Build
+        run: dotnet build RaceDay.Api.Tests/RaceDay.Api.Tests.csproj --no-restore --configuration Release
+
+      # Run all unit tests; any failing test turns the build red
+      - name: Run unit tests
+        run: dotnet test RaceDay.Api.Tests/RaceDay.Api.Tests.csproj --no-build --configuration Release --verbosity normal
