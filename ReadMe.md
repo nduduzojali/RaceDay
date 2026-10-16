@@ -74,3 +74,12 @@ The Part 2 code is in the `RaceDay.Api` folder (API) and `RaceDay.Api.Tests` (un
 Organiser endpoints return **403 Forbidden** for a Participant, and Participant endpoints return **403 Forbidden** for an Organiser. Requests with no token return **401 Unauthorized**.
 
 **How roles are managed:** anyone can register as a Participant. To register as an Organiser, the user must supply the organiser registration code (`OrganiserRegistrationCode` in `appsettings.json`). This stops people from simply choosing the Organiser role.
+
+
+## Authentication and Session Management
+
+Users register with their details and a role, then log in with their credentials. Passwords are hashed before they are stored, and the original password is never saved.
+
+After login, the API issues a signed token (JWT) containing the user's ID and role. The client sends this token with every request, which is how the user's authenticated state and role are maintained across requests. Non-public endpoints are only accessible to authenticated users, and the role in the token decides which endpoints they can use.
+
+To test in Swagger: log in, copy the token, click **Authorize**, and paste it in.
