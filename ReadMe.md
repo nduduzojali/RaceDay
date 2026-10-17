@@ -88,3 +88,8 @@ To test in Swagger: log in, copy the token, click **Authorize**, and paste it in
 ## CI/CD
 
 ![CI/CD](ci-cd-part2.png)
+
+## Part 2 Video
+
+https://youtu.be/YOUR-LINK-HERE
+
