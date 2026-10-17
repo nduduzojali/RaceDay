@@ -91,5 +91,5 @@ To test in Swagger: log in, copy the token, click **Authorize**, and paste it in
 
 ## Part 2 Video
 
-https://youtu.be/YOUR-LINK-HERE
+https://youtu.be/https://youtu.be/YSAYaKEV3tE?si=Z0aU4spt6vH8CheB
 
